@@ -1,7 +1,7 @@
 const MAX_VALUE = 10;
 
 const values = [
-  "1",
+  "A",
   "2",
   "3",
   "4",
@@ -42,7 +42,7 @@ function createDeck() {
         color: color,
         imgName: val + color,
       };
-      if (val !== "K" && val !== "Q" && val !== "J") {
+      if (val !== "K" && val !== "Q" && val !== "J" && val !== "A") {
         card.score = eval(val);
       } else {
         card.score = MAX_VALUE;

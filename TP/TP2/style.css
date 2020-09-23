@@ -34,6 +34,10 @@ button {
   box-shadow: 10px 13px 62px -21px rgba(0, 0, 0, 0.75);
 }
 
+#end {
+  background-color: #fa5454;
+}
+
 button:hover {
   background-color: lightgray;
 }
