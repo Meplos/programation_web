@@ -5,11 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blackjack</title>
     <link rel="stylesheet" href="./style.css" />
-    <script src="./app.js" defer></script>
+    <script src="./app.js" type="module" defer></script>
   </head>
   <body>
     <div class="app">
-      <h1>Hello Word 👋</h1>
+      <h1>Blackjack 🃏</h1>
+      <div class="money">
+        <div class="info">
+          <p class="text">Votre argent:</p>
+          <p id="playerMoney"></p>
+        </div>
+        <div class="info">
+          <p class="text">Celui de la banque:</p>
+          <p id="bankMoney"></p>
+        </div>
+      </div>
+
+      <div class="cardContainer">
+        <h2>Les cartes de la banque</h2>
+        <div class="info">
+          <p class="text">Le niveaux de la banque:</p>
+          <p id="bankLevel"></p>
+        </div>
+
+        <div class="cardList" id="bankCard"></div>
+      </div>
+      <div class="cardContainer">
+        <h2>Les cartes du joueur</h2>
+        <button id="play">Tirer une carte</button>
+        <div class="info">
+          <p class="text">Le niveaux de la banque: </p>
+          <p id="playerLevel"></p>
+        </div>
+        <div class="cardList" id="playerCard">
+        </div>
+        
     </div>
   </body>
 </html>

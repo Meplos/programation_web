@@ -4,4 +4,36 @@
 
 .app {
   font-family: Cascadia Code PL;
+  width: 100%;
+}
+.info {
+  display: flex;
+}
+.cardContainer {
+  margin-top: 30px;
+}
+.app > h1 {
+  align-items: center;
+}
+
+img {
+  height: 110px;
+  object-fit: contain;
+}
+.money {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  border: none;
+  background-color: #76d275;
+  padding: 6px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 10px 13px 62px -21px rgba(0, 0, 0, 0.75);
+}
+
+button:hover {
+  background-color: lightgray;
 }
