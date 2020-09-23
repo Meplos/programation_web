@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+}
+a {
+  text-decoration: inherit;
+}
+
+.app__navbar {
+  background-color: #6298df;
+  color: #41372d;
+  padding: 20px;
+  display: flex;
+  box-shadow: -1px 13px 34px -17px rgba(0, 0, 0, 0.75);
+  position: relative;
+}
+
+.app__navbar > h1 {
+  flex: 1;
+}
+
+.app__navbar > h1:hover {
+  color: white;
+}
+.app__navbarContainer {
+  display: flex;
+}
+
+.app__navbarButton {
+  margin-right: 20px;
+  font-size: 20px;
+  background-color: white;
+  color: #41372d;
+  padding: 9px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 60px -9px rgba(0, 0, 0, 0.75);
+}
+
+.app__navbarButton:hover {
+  background-color: lightgray;
+}
+.app_header {
+  display: flex;
+}
+.app_header > .MuiIcon-root {
+  margin-left: 10px;
+}
+.app__title {
+  color: #41372d;
+  margin-left: 20px;
+}
+
+.app__posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

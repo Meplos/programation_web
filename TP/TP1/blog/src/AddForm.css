@@ -1,0 +1,37 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: 40px;
+}
+
+input[type="text"] {
+  width: 80vw;
+  border-radius: 10px;
+  height: 5vh;
+}
+
+textarea {
+  font-family: Ubuntu;
+  width: 80vw;
+  border-radius: 10px;
+}
+
+select {
+  width: 80vw;
+  height: 5vh;
+  border-radius: 10px;
+}
+
+.form__field {
+  margin-top: 20px;
+}
+.form > .MuiButton-root {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #6298df;
+  color: #ffffff;
+  width: fit-content;
+  position: relative;
+  left: 95%;
+}
