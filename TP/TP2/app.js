@@ -5,6 +5,12 @@ const MIN_ACE_VALUE = 1;
 const MAX_ACE_VALUE = 11;
 const ACE_SYMBOL = "A";
 const BLACKJACK = 21;
+
+const game = {
+  playerBet: 0,
+  bankBet: 0,
+};
+
 const player = {
   name: "player",
   level: 0,
@@ -19,12 +25,32 @@ const bank = {
   cards: [],
 };
 
+const DEFAULT_BANK_BET = 0.2 * bank.money;
+
 let deck = [];
 
 function init() {
+  player.cards = [];
+  player.level = 0;
+  bank.cards = [];
+  bank.level = 0;
+
+  game.bankBet = DEFAULT_BANK_BET;
+
+  let playerBet = -1;
+  while (playerBet < 0 || playerBet > player.money) {
+    playerBet = eval(prompt(`Enter bet, under ${player.money}`));
+    console.log(playerBet);
+  }
+  game.playerBet = playerBet;
+
   deck = createDeck();
   play(bank);
+  document.getElementById("play").addEventListener("click", draw);
+  document.getElementById("end").addEventListener("click", endTurn);
+  document.querySelector(".result").style.display = "none";
 
+  document.querySelector(".result").innerHTML = "";
   update();
 }
 
@@ -61,28 +87,67 @@ function endTurn() {
   while (bank.level <= MAX_BANK_CARD_VALUE) {
     play(bank);
   }
+  endGame();
   result();
 }
 
-function result() {
-  if (bank.level > BLACKJACK && player.level <= BLACKJACK) {
-    win();
-  } else if (player.level >= bank.level && player.level <= BLACKJACK) {
-    win();
-  } else {
-    loose();
+function endGame() {
+  const app = document.querySelector(".app");
+  if (player.money <= 0) {
+    app.innerHTML = "<h1>Vous avez perdu 😣</h1>";
+    app.style.backgroundColor = "#ff0000";
+    app.style.width = "100%";
+    app.style.height = "100%";
+  }
+  if (player.money > 0 && bank.money <= 0) {
+    app.innerHTML = "<h1>Vous avez gagné  💪</h1>";
+    app.backgroundColor = "#00ff00";
+    app.style.width = "100%";
+    app.style.height = "100%";
   }
 }
+function result() {
+  if (bank.level > BLACKJACK && player.level <= BLACKJACK) {
+    genResultSentence(true);
+    player.money += game.bankBet + game.playerBet;
+    bank.money -= game.bankBet + game.playerBet;
+  } else if (player.level >= bank.level && player.level <= BLACKJACK) {
+    player.money += game.bankBet + game.playerBet;
+    bank.money -= game.bankBet + game.playerBet;
+    genResultSentence(true);
+  } else {
+    bank.money += game.bankBet + game.playerBet;
+    player.money -= game.bankBet + game.playerBet;
+    genResultSentence(false);
+  }
+  const finalScore = document.createElement("p");
+  finalScore.textContent = `Player - ${player.level} - Bank: ${bank.level}.`;
 
-function win() {
-  document.body.innerHTML = `<h1 style="color=blue"class="win"> Tu as gagné</h1><p> Player - ${player.level} - Bank: ${bank.level}.</p>`;
+  const result = document.querySelector(".result");
+  result.appendChild(finalScore);
 
-  document.body.style.background = "#76d275";
+  const restart = document.createElement("button");
+  restart.id = "restart";
+  restart.textContent = "Recommencer";
+  restart.addEventListener("click", init);
+  result.appendChild(restart);
+
+  result.style.display = "";
+  document.querySelector("#play").removeEventListener("click", draw);
+  document.querySelector("#end").removeEventListener("click", endTurn);
 }
 
-function loose() {
-  document.body.innerHTML = `<h1 style="color=black"> Tu as perdu</h1>Player - ${player.level} - Bank: ${bank.level}`;
-  document.body.style.background = "#ff0000";
+function genResultSentence(isWin) {
+  const child = document.createElement("h1");
+  const res = document.querySelector(".result");
+  if (isWin) {
+    child.textContent = "Tu as gagné 🎉";
+    res.style.backgroundColor = "#00ff00";
+  } else {
+    child.textContent = "Tu as perdu ! 😭";
+    res.style.backgroundColor = "#ff0000";
+  }
+  res.appendChild(child);
 }
 
 function updateCard(player) {
@@ -95,5 +160,3 @@ function updateCard(player) {
 }
 
 init();
-document.getElementById("play").addEventListener("click", draw);
-document.getElementById("end").addEventListener("click", endTurn);
