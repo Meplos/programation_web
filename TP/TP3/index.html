@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./weather.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="menu">
+      <input type="text" id="city" placeholder="Enter a city name" />
+      <button type="button" id="submit">Print</button>
+    </div>
+
+    <div id="data">
+      <div id="dateTime"></div>
+      <div class="data__header">
+        <img src="#" alt="" id="icon" />
+        <h1 id="cityName"></h1>
+      </div>
+      <div id="condition"></div>
+      <div id="temperature"></div>
+      <div id="humidity"></div>
+      <div id="windDir"></div>
+      <div id="windSpeed"></div>
+    </div>
+  </body>
+</html>
