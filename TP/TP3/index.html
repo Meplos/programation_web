@@ -4,26 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
     <script src="./weather.js" defer></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="menu">
-      <input type="text" id="city" placeholder="Enter a city name" />
-      <button type="button" id="submit">Print</button>
+    <div class="app">
+      <div class="menu">
+        <input type="text" id="city" placeholder="Enter a city name" />
+        <button type="button" id="submit">Print</button>
+        <div id="map" style="width: 400px; height: 300px"></div>
+        <script>
+          mapboxgl.accessToken =
+            "pk.eyJ1IjoibWVwbG9zIiwiYSI6ImNrZmltOXJ3ejA0a3IydHA3dzVqZjA2a24ifQ.oVrQ94sDWdDWGbwfjyLUKA";
+          var map = new mapboxgl.Map({
+            container: "map",
+            zoom: 3,
+            style: "mapbox://styles/mapbox/streets-v11",
+            center: [-0.5667, 44.8333],
+          });
+        </script>
+      </div>
+
+      <div id="data">
+        <div id="err_msg"></div>
+        <div id="content">
+          <div id="dateTime"></div>
+          <div class="data__header">
+            <img src="#" alt="" id="icon" />
+            <h1 id="cityName"></h1>
+          </div>
+          <div id="condition"></div>
+          <div id="temperature"></div>
+          <div id="humidity"></div>
+          <div id="windDir"></div>
+          <div id="windSpeed"></div>
+        </div>
+      </div>
     </div>
 
-    <div id="data">
-      <div id="dateTime"></div>
-      <div class="data__header">
-        <img src="#" alt="" id="icon" />
-        <h1 id="cityName"></h1>
-      </div>
-      <div id="condition"></div>
-      <div id="temperature"></div>
-      <div id="humidity"></div>
-      <div id="windDir"></div>
-      <div id="windSpeed"></div>
-    </div>
+    <script>
+      map.on("click", function (e) {
+        // The event object (e) contains information like the
+        // coordinates of the point on the map that was clicked.
+        console.log("A click event has occurred at " + e.lngLat);
+        getWeatherWithPos(e.lngLat.lat, e.lngLat.lng);
+      });
+    </script>
   </body>
 </html>

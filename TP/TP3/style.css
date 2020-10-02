@@ -3,9 +3,41 @@
   font-family: Roboto;
 }
 
-.data {
+.app {
   width: 80vw;
+  margin-left: 50px;
+  justify-content: center;
 }
-.data__header {
-  display: flex;
+
+.menu {
+  margin-top: 20px;
+  flex: 1;
+}
+
+#map {
+  margin-top: 10px;
+}
+.menu > input {
+  border: none;
+  background-color: lightgray;
+  border-radius: 20px;
+  height: 30px;
+}
+
+.menu > button {
+  padding: 0px 10px 0px 10px;
+  border: none;
+  background-color: lightgray;
+  border-radius: 20px;
+  height: 30px;
+}
+
+#data {
+  background-color: #e6e6e6;
+  margin-top: 40px;
+  width: 80vh;
+  border-radius: 20px;
+  border: 2px black solid;
+  padding: 10px;
+  text-align: center;
 }
