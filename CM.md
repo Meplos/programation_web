@@ -45,7 +45,7 @@ Les fonctions déclarer sont lié à leur _scope_. Ceci permet d'avoir des attri
 Ici val est "privé" on à aucun moyen de modifié val hors du contexte de la `counter`.
 
 ```JS
-//IIFE = Invocation imédiate;
+//IIFE = Immediately-Invoked Function Expression
 
 let counter = function() {
     let val=0;
@@ -220,6 +220,35 @@ class Rectangle extends Shape {
 ```
 
 [**Héritage plus chiant à faire**](https://medium.com/@luke_smaki/javascript-es6-classes-8a34b0a6720a)
+
+#### Méthode cool d'ES6 à utiliser !
+
+- Concaténation
+
+```JS
+const lastname = "Reveillere";
+const firstname = "Laurent";
+
+console.log(`Mon prof de programmation web ce nomme ${firstname} ${lastname}`);
+```
+
+- Échange de valeur
+
+```JS
+let a = 1, b = 2;
+
+[a, b] = [b, a];
+```
+
+- Décomposer des valeur
+
+```JS
+function marges() {
+  const gauche=1, droite=2, haut=3, bas=4;
+  return { gauche, droite, haut, bas };
+}
+const { gauche, bas } = marges();
+```
 
 ### Bonus : Lambda
 
